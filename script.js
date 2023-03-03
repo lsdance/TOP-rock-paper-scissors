@@ -42,6 +42,7 @@ function checkFinalWiner() {
   if (playerScore === 5) {
     winnerString.textContent = 'Congratulations! You won best of five!'
     shapeBtns.forEach(btn => btn.disabled = true)
+
   }
   if (computerScore === 5) {
     winnerString.textContent = 'I\'m sorry! You lose best of five!'
@@ -89,5 +90,6 @@ function playAgain() {
   computerScore = 0
   gameScorePlayer.textContent = playerScore
   gameScoreComputer.textContent = computerScore
+  winnerString.textContent = 'We don\'t have winner yet.'
   shapeBtns.forEach(btn => btn.disabled = false)
 }

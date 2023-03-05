@@ -41,11 +41,13 @@ restartBtn.addEventListener('click', playAgain)
 function checkFinalWiner() {
   if (playerScore === 5) {
     winnerString.textContent = 'Congratulations! You won best of five!'
+    winnerString.classList.add('bg-won')
     shapeBtns.forEach(btn => btn.disabled = true)
 
   }
   if (computerScore === 5) {
     winnerString.textContent = 'I\'m sorry! You lose best of five!'
+    winnerString.classList.add('bg-lose')
     shapeBtns.forEach(btn => btn.disabled = true)
   }
 }
@@ -73,14 +75,21 @@ function playRound(playerSelection, computerSelection) {
   const normalisedComputerSelection = computerSelection[0].toUpperCase() + computerSelection.slice(1).toLowerCase()
 
   if (normalisedPlayerSelection === normalisedComputerSelection) {
+    roundResultElementString.classList.add('bg-tie')
     return `Tie!  ${normalisedPlayerSelection} equals ${normalisedComputerSelection}.`
   } else if (
     normalisedPlayerSelection === 'Rock' && normalisedComputerSelection === 'Scissors' ||
     normalisedPlayerSelection === 'Paper' && normalisedComputerSelection === 'Rock' ||
     normalisedPlayerSelection === 'Scissor' && normalisedComputerSelection === 'Paper'
   ) {
+    roundResultElementString.classList.remove('bg-tie')
+    roundResultElementString.classList.remove('bg-lose')
+    roundResultElementString.classList.add('bg-won')
     return `You won! ${normalisedPlayerSelection} beats ${normalisedComputerSelection}.`
   } else {
+    roundResultElementString.classList.remove('bg-tie')
+    roundResultElementString.classList.remove('bg-won')
+    roundResultElementString.classList.add('bg-lose')
     return `You lose! ${normalisedComputerSelection} beats ${normalisedPlayerSelection}.`
   }
 }
@@ -92,4 +101,9 @@ function playAgain() {
   gameScoreComputer.textContent = computerScore
   winnerString.textContent = 'We don\'t have winner yet.'
   shapeBtns.forEach(btn => btn.disabled = false)
+  roundResultElementString.classList.remove('bg-won')
+  roundResultElementString.classList.remove('bg-lose')
+  roundResultElementString.classList.remove('bg-tie')
+  winnerString.classList.remove('bg-won')
+  winnerString.classList.remove('bg-lose')
 }

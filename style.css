@@ -6,15 +6,17 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  text-align: center;
 }
 
 h1,
 h2 {
-  background-color: chartreuse;
+  color: white;
+  background-color: black;
 }
 
 p {
-  background-color: floralwhite;
+  font-size: 20px;
 }
 
 .container {
@@ -30,11 +32,12 @@ button {
 }
 
 button:hover {
-  background-color: violet;
+  color: white;
+  background-color: black;
 }
 
 button:active {
-  background-color: chartreuse;
+  border: 2px solid gold;
 }
 
 button:disabled {
@@ -47,4 +50,16 @@ button:disabled:hover {
 
 button:disabled:active {
   background-color: grey;
+}
+
+.bg-won {
+  background-color: greenyellow;
+}
+
+.bg-lose {
+  background-color: crimson;
+}
+
+.bg-tie {
+  background-color: gold;
 }
